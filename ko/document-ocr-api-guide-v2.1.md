@@ -1,4 +1,4 @@
-## AI Service > OCR > Document OCR > API v2.0 가이드
+## AI Service > OCR > Document OCR > API v2.1 가이드
 
 ## Document OCR API 공통 정보
 
@@ -10,9 +10,7 @@
 
 ### 인증 및 권한
 
-Document OCR API를 사용하려면 Appkey가 필요합니다. Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용됩니다.
-
-Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey)를 참고하세요.
+Document OCR은(는) API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](docs.alpha-nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
 ### 응답 공통 정보
 
@@ -75,11 +73,11 @@ Content-Type: application/json
 | 4000006   | Api call limit exceeded, If you need to adjust the limit, please contact customer service. | API 호출 한도 초과              |
 | 4131000   | Request size is larger than permissible limit. the permissible limit is 5mb.               | 요청 크기가 허용 한도(5MB) 초과 |
 
-### v2.0 API 소개
+### v2.1 API 소개
 
-#### v1.0과 달라진 점
+#### v2.0과 달라진 점
 
-- 전자 봉투 방식으로 보안이 강화되었습니다.
+- User Access Key 토큰 기반 인증 방식이 적용되었습니다.
 
 #### 주의 사항
 
@@ -91,19 +89,17 @@ Content-Type: application/json
 
 #### 요청
 
-- {appKey}와 {secretKey}는 콘솔 상단 **URL & Appkey** 메뉴에서 확인할 수 있습니다.
-
 [URI]
 
 | 메서드 | URI                                              |
 | ------ | ------------------------------------------------ |
-| GET    | /v2.0/appkeys/{appKey}/public-keys/{serviceName} |
+| GET    | /v2.1/appkeys/{appKey}/public-keys/{serviceName} |
 
 [요청 헤더]
 
-| 이름          | 값          | 설명                       |
-| ------------- | ----------- | -------------------------- |
-| Authorization | {secretKey} | 콘솔에서 발급 받은 보안 키 |
+| 이름                | 값             | 설명                 |
+| ------------------- | -------------- | -------------------- |
+| X-NHN-Authorization | {Access Token} | User Access Key 토큰 |
 
 [Path Variable]
 
@@ -115,8 +111,8 @@ Content-Type: application/json
 [요청 본문]
 
 ```shell
-curl -X GET 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/public-keys/{serviceName}' \
--H 'Authorization: ${secretKey}'
+curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-keys/{serviceName}' \
+-H 'X-NHN-Authorization: ${Access Token}'
 ```
 
 #### 응답
@@ -161,21 +157,19 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/public-ke
 
 #### 요청
 
-- {appKey}와 {secretKey}는 콘솔 상단 **URL & Appkey** 메뉴에서 확인할 수 있습니다.
-
 [URI]
 
 | 메서드 | URI                                |
 | ------ | ---------------------------------- |
-| POST   | /v2.0/appkeys/{appKey}/credit-card |
+| POST   | /v2.1/appkeys/{appKey}/credit-card |
 
 [요청 헤더]
 
-| 이름          | 값              | 설명                                 |
-| ------------- | --------------- | ------------------------------------ |
-| Authorization | {secretKey}     | 콘솔에서 발급 받은 보안 키           |
-| X-Key-Version | {x-key-version} | 발급 받은 공개 키의 버전             |
-| Symmetric-Key | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
+| 이름                | 값              | 설명                                 |
+| ------------------- | --------------- | ------------------------------------ |
+| X-NHN-Authorization | {Access Token}  | User Access Key 토큰                 |
+| X-Key-Version       | {x-key-version} | 발급 받은 공개 키의 버전             |
+| Symmetric-Key       | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
 
 - {symmetricKey}는 반드시 **32byte 난수**로 생성해야 합니다.
 - {symmetricKey}는 반드시 **RSA/ECB/PKCS1Padding** 방식으로 암호화되어야 합니다(공개 키 이용).
@@ -198,9 +192,9 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/public-ke
 [요청 본문]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/credit-card' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-card' \
 -F 'image=@sample.png' \
--H 'Authorization: ${secretKey}' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -302,21 +296,19 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/credit-c
 
 #### 요청
 
-- {appKey}와 {secretKey}는 콘솔 상단 **URL &amp; Appkey** 메뉴에서 확인할 수 있습니다.
-
 [URI]
 
 | 메서드 | URI                            |
 | ------ | ------------------------------ |
-| POST   | /v2.0/appkeys/{appKey}/id-card |
+| POST   | /v2.1/appkeys/{appKey}/id-card |
 
 [요청 헤더]
 
-| 이름          | 값              | 설명                                 |
-| ------------- | --------------- | ------------------------------------ |
-| Authorization | {secretKey}     | 콘솔에서 발급 받은 보안 키           |
-| X-Key-Version | {x-key-version} | 발급 받은 공개 키의 버전             |
-| Symmetric-Key | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
+| 이름                | 값              | 설명                                 |
+| ------------------- | --------------- | ------------------------------------ |
+| X-NHN-Authorization | {Access Token}  | User Access Key 토큰                 |
+| X-Key-Version       | {x-key-version} | 발급 받은 공개 키의 버전             |
+| Symmetric-Key       | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
 
 - {symmetricKey}는 반드시 **32byte 난수**로 생성해야 합니다.
 - {symmetricKey}는 반드시 **RSA/ECB/PKCS1Padding** 방식으로 암호화되어야 합니다(공개 키 이용).
@@ -339,9 +331,9 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/credit-c
 [요청 본문]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card' \
 -F 'image=@sample.png' \
--H 'Authorization: ${secretKey}' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -524,22 +516,20 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card'
 
 #### 요청
 
-- {appKey}와 {secretKey}는 콘솔 상단 **URL &amp; Appkey** 메뉴에서 확인할 수 있습니다.
-
 [URI]
 
 | 메서드 | URI                                         |
 | ------ | ------------------------------------------- |
-| POST   | /v2.0/appkeys/{appKey}/id-card/authenticity |
+| POST   | /v2.1/appkeys/{appKey}/id-card/authenticity |
 
 [요청 헤더]
 
-| 이름          | 값              | 설명                                 |
-| ------------- | --------------- | ------------------------------------ |
-| Authorization | {secretKey}     | 콘솔에서 발급 받은 보안 키           |
-| X-Key-Version | {x-key-version} | 발급 받은 공개 키의 버전             |
-| Symmetric-Key | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
-| Request-Key   | {Request-Key}   | 신분증 분석 후 발급 받은 Request-Key |
+| 이름                | 값              | 설명                                 |
+| ------------------- | --------------- | ------------------------------------ |
+| X-NHN-Authorization | {Access Token}  | User Access Key 토큰                 |
+| X-Key-Version       | {x-key-version} | 발급 받은 공개 키의 버전             |
+| Symmetric-Key       | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
+| Request-Key         | {Request-Key}   | 신분증 분석 후 발급 받은 Request-Key |
 
 - {symmetricKey}는 반드시 **32byte 난수**로 생성해야 합니다.
 - {symmetricKey}는 반드시 **RSA/ECB/PKCS1Padding** 방식으로 암호화되어야 합니다(공개 키 이용).
@@ -570,8 +560,8 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card'
 [요청 본문]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/authenticity' \
--H 'Authorization: ${secretKey}' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/authenticity' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}' \
 -H 'Request-Key: ${Request-Key}' \
@@ -625,21 +615,19 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 
 #### 요청
 
-- {appKey}와 {secretKey}는 콘솔 상단 **URL &amp; Appkey** 메뉴에서 확인할 수 있습니다.
-
 [URI]
 
 | 메서드 | URI                                        |
 | ------ | ------------------------------------------ |
-| POST   | /v2.0/appkeys/{appKey}/id-card/stand-alone |
+| POST   | /v2.1/appkeys/{appKey}/id-card/stand-alone |
 
 [요청 헤더]
 
-| 이름          | 값              | 설명                                 |
-| ------------- | --------------- | ------------------------------------ |
-| Authorization | {secretKey}     | 콘솔에서 발급 받은 보안 키           |
-| X-Key-Version | {x-key-version} | 발급 받은 공개 키의 버전             |
-| Symmetric-Key | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
+| 이름                | 값              | 설명                                 |
+| ------------------- | --------------- | ------------------------------------ |
+| X-NHN-Authorization | {Access Token}  | User Access Key 토큰                 |
+| X-Key-Version       | {x-key-version} | 발급 받은 공개 키의 버전             |
+| Symmetric-Key       | {symmetricKey}  | 발급 받은 공개 키로 암호화된 대칭 키 |
 
 - {symmetricKey}는 반드시 **32byte 난수**로 생성해야 합니다.
 - {symmetricKey}는 반드시 **RSA/ECB/PKCS1Padding** 방식으로 암호화되어야 합니다(공개 키 이용).
@@ -662,9 +650,9 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 [요청 본문]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/stand-alone' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/stand-alone' \
 -F 'image=@sample.png' \
--H 'Authorization: ${secretKey}' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
