@@ -92,7 +92,7 @@ Content-Type: application/json
 [요청 본문]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/document-ai' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/document-ai' \
 -H 'X-NHN-Authorization: ${Access Token}' \
 -F 'image=@sample.png' \
 -F 'prompt="간단하게 요약 해줘"' \

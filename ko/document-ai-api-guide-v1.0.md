@@ -12,7 +12,7 @@
 
 Document AI API를 사용하려면 Appkey가 필요합니다. Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용됩니다.
 
-Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey)를 참고하세요.
+Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](docs.alpha-nhncloud.com/ko/nhncloud/ko/public-api/appkey)를 참고하세요.
 
 ### 응답 공통 정보
 
