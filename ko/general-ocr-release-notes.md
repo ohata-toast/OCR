@@ -1,6 +1,6 @@
 ## AI Service > OCR > General OCR > 릴리스 노트
 
-### 2026. 03.10
+### 2026. 03. 10.
 
 - API v1.1 : User Access Token 기반 인증 추가
 
