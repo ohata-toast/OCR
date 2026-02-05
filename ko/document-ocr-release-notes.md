@@ -2,7 +2,9 @@
 
 ### 2026. 03. 10.
 
-- API 2.1 : User Access Token 기반 인증 추가
+- API v1.1, v2.1 출시
+  - User Access Key 토큰 인증을 사용하는 API가 추가되었습니다.
+  - User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](docs.alpha-nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
 ### 2025. 05. 13.
 
