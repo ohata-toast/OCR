@@ -81,9 +81,9 @@ Content-Type: application/json
 
 [URI]
 
-| 메서드 | URI            |
-| ------ | -------------- |
-| POST   | /v1.1/business |
+| 메서드 | URI                             |
+| ------ | ------------------------------- |
+| POST   | /v1.1/appkeys/{appKey}/business |
 
 [요청 헤더]
 
@@ -91,12 +91,18 @@ Content-Type: application/json
 | ------------------- | -------------- | --------------------- |
 | X-NHN-Authorization | {Access Token} | 발급받은 Access Token |
 
+[Path Variable]
+
+| 이름   | 값       | 설명                           |
+| ------ | -------- | ------------------------------ |
+| appKey | {appKey} | 통합 Appkey 또는 서비스 Appkey |
+
 [요청 본문]
 
 - 이미지 파일의 바이너리 데이터를 넣습니다.
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/business' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business' \
 -F 'image=@sample.png' \
 -H 'X-NHN-Authorization: ${Access Token}'
 ```
@@ -183,15 +189,21 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/business' \
 
 [URI]
 
-| 메서드 | URI                   |
-| ------ | --------------------- |
-| POST   | /v1.1/business/status |
+| 메서드 | URI                                    |
+| ------ | -------------------------------------- |
+| POST   | /v1.1/appkeys/{appKey}/business/status |
 
 [요청 헤더]
 
 | 이름                | 값             | 설명                  |
 | ------------------- | -------------- | --------------------- |
 | X-NHN-Authorization | {Access Token} | 발급받은 Access Token |
+
+[Path Variable]
+
+| 이름   | 값       | 설명                           |
+| ------ | -------- | ------------------------------ |
+| appKey | {appKey} | 통합 Appkey 또는 서비스 Appkey |
 
 [필드]
 
@@ -202,7 +214,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/business' \
 [요청 본문]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/business/status' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business/status' \
 -H 'X-NHN-Authorization: ${Access Token}' \
 --data-raw '{
   "businessNumber": "1234567890"
