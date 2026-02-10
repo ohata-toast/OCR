@@ -1,4 +1,4 @@
-## AI Service > OCR > Document OCR > API v1.0 가이드
+## AI Service > OCR > Document OCR > API v1.1 가이드
 
 ## Document OCR API 공통 정보
 
@@ -10,9 +10,7 @@
 
 ### 인증 및 권한
 
-Document OCR API를 사용하려면 Appkey가 필요합니다. Appkey는 API 호출 시 요청 URL에 포함하여 특정 리소스를 가리키고 식별하는 데 사용됩니다.
-
-Appkey 확인 및 사용에 대한 자세한 내용은 [Appkey](docs.nhncloud.com/ko/nhncloud/ko/public-api/appkey)를 참고하세요.
+Document OCR은(는) API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
 ### 응답 공통 정보
 
@@ -73,6 +71,8 @@ Content-Type: application/json
 | 4000004   | Uploaded file is empty.                                                                    | 업로드된 파일이 비어 있음       |
 | 4000005   | Required headers is missing.                                                               | 필수 헤더 누락                  |
 | 4000006   | Api call limit exceeded, If you need to adjust the limit, please contact customer service. | API 호출 한도 초과              |
+| 4010006   | Invalid token.                                                                             | 유효하지 않은 토큰              |
+| 4010007   | Permission denied.                                                                         | 권한 없음                       |
 | 4131000   | Request size is larger than permissible limit. the permissible limit is 5mb.               | 요청 크기가 허용 한도(5MB) 초과 |
 
 ### 사업자등록증 분석 API
@@ -83,13 +83,13 @@ Content-Type: application/json
 
 | 메서드 | URI                             |
 | ------ | ------------------------------- |
-| POST   | /v1.0/appkeys/{appKey}/business |
+| POST   | /v1.1/appkeys/{appKey}/business |
 
 [요청 헤더]
 
-| 이름          | 값          | 설명                       |
-| ------------- | ----------- | -------------------------- |
-| Authorization | {secretKey} | 콘솔에서 발급 받은 보안 키 |
+| 이름                | 값             | 설명                  |
+| ------------------- | -------------- | --------------------- |
+| X-NHN-Authorization | {Access Token} | 발급받은 Access Token |
 
 [Path Variable]
 
@@ -102,9 +102,9 @@ Content-Type: application/json
 - 이미지 파일의 바이너리 데이터를 넣습니다.
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business' \
 -F 'image=@sample.png' \
--H 'Authorization: ${secretKey}'
+-H 'X-NHN-Authorization: ${Access Token}'
 ```
 
 [필드]
@@ -187,19 +187,17 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business
 
 #### 요청
 
-- {appKey}와 {secretKey}는 콘솔 상단 **URL & Appkey** 메뉴에서 확인이 가능합니다.
-
 [URI]
 
 | 메서드 | URI                                    |
 | ------ | -------------------------------------- |
-| POST   | /v1.0/appkeys/{appKey}/business/status |
+| POST   | /v1.1/appkeys/{appKey}/business/status |
 
 [요청 헤더]
 
-| 이름          | 값          | 설명                       |
-| ------------- | ----------- | -------------------------- |
-| Authorization | {secretKey} | 콘솔에서 발급 받은 보안 키 |
+| 이름                | 값             | 설명                  |
+| ------------------- | -------------- | --------------------- |
+| X-NHN-Authorization | {Access Token} | 발급받은 Access Token |
 
 [Path Variable]
 
@@ -216,8 +214,8 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business
 [요청 본문]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business/status' \
--H 'Authorization: ${secretKey}' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business/status' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 --data-raw '{
   "businessNumber": "1234567890"
 }'
@@ -268,134 +266,3 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business
 | 05     | 휴업자                                                                      |
 | 06     | 폐업자                                                                      |
 | 09     | 기타                                                                        |
-
-### 신용카드 분석 API
-
-#### 요청
-
-- {appKey}와 {secretKey}는 콘솔 상단 **URL & Appkey** 메뉴에서 확인이 가능합니다.
-
-[URI]
-
-| 메서드 | URI                                |
-| ------ | ---------------------------------- |
-| POST   | /v1.0/appkeys/{appKey}/credit-card |
-
-[요청 헤더]
-
-| 이름          | 값          | 설명                       |
-| ------------- | ----------- | -------------------------- |
-| Authorization | {secretKey} | 콘솔에서 발급 받은 보안 키 |
-
-[Path Variable]
-
-| 이름   | 값       | 설명                           |
-| ------ | -------- | ------------------------------ |
-| appKey | {appKey} | 통합 Appkey 또는 서비스 Appkey |
-
-[요청 본문]
-
-- 이미지 파일의 바이너리 데이터를 넣습니다.
-
-```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/credit-card' \
--F 'image=@sample.png' \
--H 'Authorization: ${secretKey}'
-```
-
-[필드]
-
-| 이름  | 타입                | 설명        |
-| ----- | ------------------- | ----------- |
-| image | multipart/form–data | 이미지 파일 |
-
-#### 응답
-
-[응답 본문]
-
-```json
-{
-    "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": "SUCCESS"
-    },
-    "result": {
-        "fileType": "png",
-        "resolution": "low",
-        "cardNums": [
-                    {
-                        "value": "1111",
-                        "conf": 0.87
-                    },
-                    {
-                        "value": "2222",
-                        "conf": 0.99
-                    },
-                    {
-                        "value": "3333",
-                        "conf": 0.97
-                    },
-                    {
-                        "value": "4444",
-                        "conf": 0.89
-                    }
-        ],
-        "totalCardNum": "111222233334444",
-        "cardNumBoxes": [
-            {
-                "x1": 62,
-                "y1": 256,
-                "x2": 192,
-                "y2": 256,
-                "x3": 192,
-                "y3": 301,
-                "x4": 62,
-                "y4": 301
-            },
-            ...
-        ],
-        "validThru": {
-            "value": "04/19",
-            "conf": 0.53
-        },
-        "validThruBox": {
-            "x1": 316,
-            "y1": 315,
-            "x2": 426,
-            "y2": 315,
-            "x3": 426,
-            "y3": 347,
-            "x4": 316,
-            "y4": 347
-        }
-    }
-}
-```
-
-[헤더]
-
-| 이름          | 타입    | 설명                                            |
-| ------------- | ------- | ----------------------------------------------- |
-| isSuccessful  | Boolean | 분석 API 성공 여부                              |
-| resultCode    | Integer | 결과 코드                                       |
-| resultMessage | String  | 결과 메시지(성공 시 success, 실패 시 오류 내용) |
-
-[필드]
-
-| 이름              | 타입   | 설명                                                            |
-| ----------------- | ------ | --------------------------------------------------------------- |
-| fileType          | String | 파일 확장자(.jpg, .png)                                         |
-| resolution        | String | 권장 해상도(760\*480px) 이상이면 normal, 권장 해상도 미만은 low |
-| cardNums          | List   | 카드 번호 인식 결과 목록                                        |
-| cardNums[0].value | String | 인식 결과                                                       |
-| cardNums[0].conf  | Double | 인식 결과 신뢰도                                                |
-| totalCardNum      | List   | 카드 번호 전체 인식 결과                                        |
-| cardNumBoxes      | List   | 카드 번호 인식 영역(Bounding box) 좌표 목록                     |
-| cardNumBoxes[0]   | Object | 인식 영역 좌표 { x1, y1, x2, y2, x3, y3, x4, y4 }               |
-| validThru.value   | String | 유효 기간 인식 내용                                             |
-| validThru.conf    | Double | 유효 기간 인식 결과 신뢰도                                      |
-| validThruBox      | Object | 유효 기간 인식 영역 좌표 { x1, y1, x2, y2, x3, y3, x4, y4 }     |
-
-- boxes[0]
-  ![Bounding box](http://static.toastoven.net/prod_ocr/bbox.png)

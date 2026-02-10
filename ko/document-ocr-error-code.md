@@ -1,7 +1,7 @@
 ## AI Service > OCR > Document OCR > 오류 코드
 
 | resultCode | resultKey                                 | resultMessage                                                                              |
-|------------|-------------------------------------------|--------------------------------------------------------------------------------------------|
+| ---------- | ----------------------------------------- | ------------------------------------------------------------------------------------------ |
 | 0          | SUCCESS                                   | SUCCESS                                                                                    |
 | -1         | FAIL                                      | Unknown error.                                                                             |
 | 400        | BAD_REQUEST                               | Bad Request                                                                                |
@@ -11,14 +11,14 @@
 | 405        | METHOD_NOT_ALLOWED                        | Method Not Allowed                                                                         |
 | 415        | UNSUPPORTED_MEDIA_TYPE                    | Unsupported Media Type                                                                     |
 | 4000001    | INVALID_PARAMETER                         | Invalid parameter.                                                                         |
-| 4000002 | INVALID_FILE | Invalid file.                                                           |
+| 4000002    | INVALID_FILE                              | Invalid file.                                                                              |
 | 4000003    | INVALID_FILE_TYPE                         | Invalid file type.                                                                         |
 | 4000004    | UPLOADED_FILE_IS_EMPTY                    | Uploaded file is empty.                                                                    |
 | 4000005    | MISSING_REQUIRED_HEADER                   | Required headers is missing.                                                               |
 | 4000006    | API_CALL_LIMIT_EXCEEDED                   | Api call limit exceeded, If you need to adjust the limit, please contact customer service. |
 | 4000101    | INVALID_BUSINESS_REGISTRATION_FORMAT      | Invalid business registration format.                                                      |
 | 4000102    | NOT_EXIST_BUSINESS_NUMBER                 | Business number that does not exist.                                                       |
-| 4000103    | PDF_PASSWORD_PROTECTED                    | PDF file is password protected.                                                   |
+| 4000103    | PDF_PASSWORD_PROTECTED                    | PDF file is password protected.                                                            |
 | 4000111    | CREDIT_CARD_INFO_NOT_FOUND                | Credit card info not found.                                                                |
 | 4000121    | ID_CARD_INFO_NOT_FOUND                    | Id card info not found.                                                                    |
 | 4000122    | AUTHENTICITY_REQUEST_KEY_INVALID          | Request Key is invalid or expired.                                                         |
@@ -35,6 +35,8 @@
 | 4010003    | NOT_ALLOWED_USER                          | Not allowed user.                                                                          |
 | 4010004    | INVALID_PROJECT                           | Invalid project.                                                                           |
 | 4010005    | UNAUTHORIZED_ROLE                         | Unauthorized role.                                                                         |
+| 4010006    | INVALID_TOKEN                             | Invalid token.                                                                             |
+| 4010007    | PERMISSION_DENIED                         | Permission denied.                                                                         |
 | 4131000    | MAX_UPLOAD_SIZE_EXCEEDED                  | Request size is larger than permissible limit. the permissible limit is 5mb.               |
 | 5000001    | INTERNAL_API_FAIL                         | Internal Api fail.                                                                         |
 | 5000002    | ERROR_PARSING_FAIL                        | Error parsing fail.                                                                        |
@@ -43,7 +45,7 @@
 | 5000005    | FILE_READ_FAIL                            | File read fail.                                                                            |
 | 5000006    | DECRYPT_FAIL                              | Decrypt fail.                                                                              |
 | 5000007    | ENCRYPT_FAIL                              | Encrypt fail.                                                                              |
-| 5000503    | API_TEMPORARILY_UNAVAILABLE               | The API you requested is temporarily unavailable. Please try again later.                                                                              |
+| 5000503    | API_TEMPORARILY_UNAVAILABLE               | The API you requested is temporarily unavailable. Please try again later.                  |
 | 5003001    | OCR_DOCUMENT_BUSINESS_API_FAIL            | Document(business) OCR Api fail.                                                           |
 | 5003002    | OCR_DOCUMENT_BUSINESS_API_RETURN_EMPTY    | Document(business) OCR Api returned empty body.                                            |
 | 5003003    | OCR_DOCUMENT_BUSINESS_RECOGNITION_FAIL    | Document(business) OCR failed to recognize the document.                                   |
