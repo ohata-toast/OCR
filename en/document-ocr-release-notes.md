@@ -1,5 +1,11 @@
 ## AI Service > OCR > Document OCR > Release Notes
 
+### March 10, 2026
+
+- API v1.1, v2.1 released
+  - Added API using User Access Key token authentication.
+  - For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](https://docs.alpha-nhncloud.com/en/nhncloud/en/public-api/user-access-key-token).
+
 ### May 13, 2025
 * Added [error code](./document-ocr-error-code.md) for password-configured PDF files when requesting business license analysis
 
