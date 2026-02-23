@@ -1,4 +1,4 @@
-## AI Service > OCR > Document OCR > API v2.0 Guide
+## AI Service > OCR > Document OCR > API v2.1 Guide
 
 ## Document OCR API Common Information
 
@@ -10,12 +10,8 @@
 
 ### Authentication and Authorization
 
-AppKey and SecretKey are required to use the Document OCR API.
-An Appkey is a unique authentication key issued for each NHN Cloud service, used to identify the service and validate API requests. A SecretKey is a private key used to control access to the API.
-For more information on checking and using Appkeys and SecretKeys, please refer to the [Appkey](https://docs.alpha-nhncloud.com/en/nhncloud/en/public-api/appkey).
-
-Project Integrated Appkey can be used in place of the Appkey. Project Integrated Appkey is a common authentication key that can be shared across multiple services within a single NHN Cloud project.
-For more information on creating and using Project Integrated Appkeys, please refer to the [Project Integrated Appkey](https://docs.alpha-nhncloud.com/en/nhncloud/en/public-api/project-appkey).
+Document OCR uses User Access Key tokens for authentication and authorization when making API calls. The User Access Key token is a temporary, Bearer-type access token issued from a User Access Key.
+For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](https://docs.alpha-nhncloud.com/en/nhncloud/en/public-api/user-access-key-token).
 
 ### Common Response Information
 
@@ -76,13 +72,15 @@ Content-Type: application/json
 | 4000004    | Uploaded file is empty.                                                                    | Uploaded file is empty                           |
 | 4000005    | Required headers is missing.                                                               | Required headers missing                         |
 | 4000006    | Api call limit exceeded, If you need to adjust the limit, please contact customer service. | API call limit exceeded                          |
+| 4010006    | Invalid token.                                                                             | Invalid token                                    |
+| 4010007    | Permission denied.                                                                         | Permission denied                                |
 | 4131000    | Request size is larger than permissible limit. the permissible limit is 5mb.               | Request size exceeds the permissible limit (5MB) |
 
-### Overview of v2.0 API
+### Overview of v2.1 API
 
-#### Changes from v1.0
+#### Changes from v2.0
 
-* Enhanced security with the electronic envelope method.
+* User Access Key token-based authentication has been applied.
 
 #### Caution
 
@@ -98,13 +96,13 @@ Content-Type: application/json
 
 | Method | URI                                              |
 |--------|--------------------------------------------------|
-| GET    | /v2.0/appkeys/{appKey}/public-keys/{serviceName} |
+| GET    | /v2.1/appkeys/{appKey}/public-keys/{serviceName} |
 
 [Request Header]
 
-| Name          | Value       | Description                          |
-|---------------|-------------|--------------------------------------|
-| Authorization | {secretKey} | Security key issued from the console |
+| Name                | Value          | Description          |
+|---------------------|----------------|----------------------|
+| X-NHN-Authorization | {Access Token} | User Access Key token |
 
 [Path Variable]
 
@@ -116,8 +114,8 @@ Content-Type: application/json
 [Request Body]
 
 ```shell
-curl -X GET 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/public-keys/{serviceName}' \
--H 'Authorization: ${secretKey}'
+curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-keys/{serviceName}' \
+-H 'X-NHN-Authorization: ${Access Token}'
 ```
 
 #### Response
@@ -166,15 +164,15 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/public-ke
 
 | Method | URI                                |
 |--------|------------------------------------|
-| POST   | /v2.0/appkeys/{appKey}/credit-card |
+| POST   | /v2.1/appkeys/{appKey}/credit-card |
 
 [Request Header]
 
-| Name          | Value           | Description                                        |
-|---------------|-----------------|----------------------------------------------------|
-| Authorization | {secretKey}     | Security key issued from the console               |
-| X-Key-Version | {x-key-version} | Version of the public key issued                   |
-| Symmetric-Key | {symmetricKey}  | Symmetric key encrypted with the issued public key |
+| Name                | Value           | Description                                        |
+|---------------------|-----------------|----------------------------------------------------|
+| X-NHN-Authorization | {Access Token}  | User Access Key token                              |
+| X-Key-Version       | {x-key-version} | Version of the public key issued                   |
+| Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 
 * {symmetricKey} must be created as a **32-byte random number**.
 * {symmetricKey} must be encrypted with the **RSA/ECB/PKCS1Padding** method (using public key).
@@ -197,9 +195,9 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/public-ke
 [Request Body]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/credit-card' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-card' \
 -F 'image=@sample.png' \
--H 'Authorization: ${secretKey}' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -305,15 +303,15 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/credit-c
 
 | Method | URI                            |
 |--------|--------------------------------|
-| POST   | /v2.0/appkeys/{appKey}/id-card |
+| POST   | /v2.1/appkeys/{appKey}/id-card |
 
 [Request Header]
 
-| Name          | Value           | Description                                        |
-|---------------|-----------------|----------------------------------------------------|
-| Authorization | {secretKey}     | Security key issued from the console               |
-| X-Key-Version | {x-key-version} | Version of the public key issued                   |
-| Symmetric-Key | {symmetricKey}  | Symmetric key encrypted with the issued public key |
+| Name                | Value           | Description                                        |
+|---------------------|-----------------|----------------------------------------------------|
+| X-NHN-Authorization | {Access Token}  | User Access Key token                              |
+| X-Key-Version       | {x-key-version} | Version of the public key issued                   |
+| Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 
 * {symmetricKey} must be created as a **32-byte random number**.
 * {symmetricKey} must be encrypted with the **RSA/ECB/PKCS1Padding** method (using public key).
@@ -336,9 +334,9 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/credit-c
 [Request Body]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card' \
 -F 'image=@sample.png' \
--H 'Authorization: ${secretKey}' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -527,16 +525,16 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card'
 
 | Method | URI                                         |
 |--------|---------------------------------------------|
-| POST   | /v2.0/appkeys/{appKey}/id-card/authenticity |
+| POST   | /v2.1/appkeys/{appKey}/id-card/authenticity |
 
 [Request Header]
 
-| Name          | Value           | Description                                        |
-|---------------|-----------------|----------------------------------------------------|
-| Authorization | {secretKey}     | Security key issued from the console               |
-| X-Key-Version | {x-key-version} | Version of the public key issued                   |
-| Symmetric-Key | {symmetricKey}  | Symmetric key encrypted with the issued public key |
-| Request-Key   | {Request-Key}   | Request-Key issued after ID card analysis          |
+| Name                | Value           | Description                                        |
+|---------------------|-----------------|----------------------------------------------------|
+| X-NHN-Authorization | {Access Token}  | User Access Key token                              |
+| X-Key-Version       | {x-key-version} | Version of the public key issued                   |
+| Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
+| Request-Key         | {Request-Key}   | Request-Key issued after ID card analysis          |
 
 * {symmetricKey} must be created as a **32-byte random number**.
 * {symmetricKey} must be encrypted with the **RSA/ECB/PKCS1Padding** method (using public key).
@@ -567,8 +565,8 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card'
 [Request Body]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/authenticity' \
--H 'Authorization: ${secretKey}' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/authenticity' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}' \
 -H 'Request-Key: ${Request-Key}' \
@@ -626,15 +624,15 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 
 | Method | URI                                        |
 |--------|--------------------------------------------|
-| POST   | /v2.0/appkeys/{appKey}/id-card/stand-alone |
+| POST   | /v2.1/appkeys/{appKey}/id-card/stand-alone |
 
 [Request Header]
 
-| Name          | Value           | Description                                        |
-|---------------|-----------------|----------------------------------------------------|
-| Authorization | {secretKey}     | Security key issued from the console               |
-| X-Key-Version | {x-key-version} | Version of the public key issued                   |
-| Symmetric-Key | {symmetricKey}  | Symmetric key encrypted with the issued public key |
+| Name                | Value           | Description                                        |
+|---------------------|-----------------|----------------------------------------------------|
+| X-NHN-Authorization | {Access Token}  | User Access Key token                              |
+| X-Key-Version       | {x-key-version} | Version of the public key issued                   |
+| Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 
 * {symmetricKey} must be created as a **32-byte random number**.
 * {symmetricKey} must be encrypted with the **RSA/ECB/PKCS1Padding** method (using public key).
@@ -657,9 +655,9 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 [Request Body]
 
 ```shell
-curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/stand-alone' \
+curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/stand-alone' \
 -F 'image=@sample.png' \
--H 'Authorization: ${secretKey}' \
+-H 'X-NHN-Authorization: ${Access Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
