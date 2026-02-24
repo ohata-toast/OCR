@@ -1,16 +1,92 @@
-## AI Service > OCR > Document OCR > API v1.0ガイド
+## AI Service > OCR > Document OCR > API v1.0 ガイド
+
+## Document OCR API 共通情報
+
+### APIエンドポイント
+
+| リージョン      | エンドポイント                       |
+| --------------- | ----------------------------------- |
+| 韓国(板橋)リージョン | https://ocr.api.nhncloudservice.com |
+
+### 認証及び権限
+
+Document OCR APIを使用するには、AppkeyとSecretKeyが必要です。
+Appkeyは、NHN Cloudの各サービスごとに発行される固有の認証キーであり、APIリクエスト時のサービス識別と有効性検証に使用されます。SecretKeyは、APIへのアクセスを制御するシークレットキーです。
+Appkey及びSecretKeyの確認及び使用に関する詳細は、[Appkey](https://docs.alpha-nhncloud.com/ja/nhncloud/ja/public-api/appkey)を参照してください。
+
+Appkeyの代わりに、プロジェクト統合Appkeyを使用することも可能です。プロジェクト統合Appkeyは、NHN Cloudの1つのプロジェクト内の複数のサービスに対して共通で使用できる認証キーです。
+プロジェクト統合Appkeyの作成及び使用に関する詳細は、[プロジェクト統合Appkey](https://docs.alpha-nhncloud.com/ja/nhncloud/ja/public-api/project-appkey)を参照してください。
+
+### レスポンス共通情報
+
+すべてのAPIリクエストレスポンスとしてHTTP 200 OKを返します。APIリクエストの成否はResponse Bodyのheader項目を参照して判断できます。
+
+<details>
+  <summary><strong>成功レスポンス</strong></summary>
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "result": {
+        ...
+    }
+}
+```
+
+</details>
+
+<details>
+  <summary><strong>失敗レスポンス</strong></summary>
+
+```
+{
+    "header": {
+        "isSuccessful": false,
+        "resultCode": -1,
+        "resultMessage": "Unknown error."
+    }
+}
+```
+
+</details>
+
+| 名前          | タイプ  | 説明                                       |
+| ------------- | ------- | ------------------------------------------ |
+| resultCode    | int     | レスポンスコード<br>成功時0、失敗時エラーコードを返す |
+| resultMessage | String  | レスポンスメッセージ                        |
+| isSuccessful  | boolean | 成否                                       |
+
+### エラーコード
+
+#### 共通
+
+| エラーコード | エラーメッセージ                                                                           | 説明                          |
+| ------------ | ------------------------------------------------------------------------------------------ | ----------------------------- |
+| -1           | Unknown error.                                                                             | 不明なエラー                  |
+| 4000001      | Invalid parameter.                                                                         | 無効なパラメータ              |
+| 4000002      | Invalid file.                                                                              | 無効なファイル                |
+| 4000003      | Invalid file type.                                                                         | 無効なファイルタイプ          |
+| 4000004      | Uploaded file is empty.                                                                    | アップロードされたファイルが空 |
+| 4000005      | Required headers is missing.                                                               | 必須ヘッダの欠落              |
+| 4000006      | Api call limit exceeded, If you need to adjust the limit, please contact customer service. | API呼び出し限度超過           |
+| 4131000      | Request size is larger than permissible limit. the permissible limit is 5mb.               | リクエストサイズが許容限度(5MB)超過 |
 
 ### 事業者登録証分析API
 
 #### リクエスト
 
-* {appKey}と{secretKey}はコンソール上部の**URL & Appkey**メニューで確認が可能です。
-
 [URI]
 
-| メソッド | URI                                                                |
-|------|--------------------------------------------------------------------|
-| POST | https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business |
+| メソッド | URI                             |
+|------|---------------------------------|
+| POST | /v1.0/appkeys/{appKey}/business |
 
 [リクエストヘッダ]
 
@@ -114,13 +190,11 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business
 
 #### リクエスト
 
-* {appKey}と{secretKey}は、コンソール上部の**URL & Appkey**メニューで確認できます。
-
 [URI]
 
-| メソッド | URI                                                                       |
-|------|---------------------------------------------------------------------------|
-| POST | https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business/status |
+| メソッド | URI                                    |
+|------|----------------------------------------|
+| POST | /v1.0/appkeys/{appKey}/business/status |
 
 [リクエストヘッダ]
 
@@ -200,13 +274,11 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/business
 
 #### リクエスト
 
-* {appKey}と{secretKey}はコンソール上部の**URL & Appkey**メニューから確認できます。
-
 [URI]
 
-| メソッド | URI                                                                   |
-|------|-----------------------------------------------------------------------|
-| POST | https://ocr.api.nhncloudservice.com/v1.0/appkeys/{appKey}/credit-card |
+| メソッド | URI                                |
+|------|------------------------------------|
+| POST | /v1.0/appkeys/{appKey}/credit-card |
 
 [リクエストヘッダ]
 
