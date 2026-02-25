@@ -4,7 +4,7 @@
 
 - API v1.1 출시
   - User Access Key 토큰 인증을 사용하는 API가 추가되었습니다.
-  - User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](https://docs.nhncloud.com/ko/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
+  - User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
 ### 2025. 04. 15.
 

@@ -4,7 +4,7 @@
 
 - API v1.1 released
   - Added API using User Access Key token authentication.
-  - For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](https://docs.nhncloud.com/en/nhncloud/en/public-api/user-access-key-token).
+  - For more information on issuing and using User Access Key tokens, please refer to the [User Access Key Token](/nhncloud/en/public-api/user-access-key-token).
 
 ### April 15, 2025
 * Improved the speed of image recognition
