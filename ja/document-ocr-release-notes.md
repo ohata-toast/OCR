@@ -4,7 +4,7 @@
 
 - API v1.1、v2.1リリース
   - User Access Keyトークン認証を使用するAPIが追加されました。
-  - User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](https://docs.alpha-nhncloud.com/ja/nhncloud/ja/public-api/user-access-key-token)を参照してください。
+  - User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
 
 ### 2025. 05. 13.
 * 事業者登録証の分析リクエスト時に、パスワードで保護されたPDFファイルに対する[エラーコード](./document-ocr-error-code.md)を追加

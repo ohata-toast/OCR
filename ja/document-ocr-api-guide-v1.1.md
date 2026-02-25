@@ -11,7 +11,7 @@
 ### 認証及び権限
 
 Document OCRは、API呼び出し時の認証/認可のためにUser Access Keyトークンを使用します。User Access Keyトークンは、User Access Keyに基づいて発行されるBearerタイプの一時的なアクセストークンです。
-User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](https://docs.alpha-nhncloud.com/ja/nhncloud/ja/public-api/user-access-key-token)を参照してください。
+User Access Keyトークンの発行及び使用に関する詳細は、[User Access Keyトークン](/nhncloud/ja/public-api/user-access-key-token)を参照してください。
 
 ### レスポンス共通情報
 
