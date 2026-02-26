@@ -14,7 +14,7 @@ Document OCR은 API 호출 시 인증/인가를 위해 User Access Key 토큰을
 
 ### 응답 공통 정보
 
-모든 API 요청 응답으로 HTTP 200 OK를 전달합니다. API 요청 성공 유무는 Response Body의 header 항목을 참고하여 판단할 수 있습니다.
+모든 API 요청 응답으로 HTTP 200 OK를 전달합니다. API 요청 성공 여부는 Response Body의 header 항목을 참고하여 판단할 수 있습니다.
 
 <details>
   <summary><strong>성공 응답</strong></summary>
