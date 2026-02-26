@@ -105,7 +105,7 @@ Content-Type: application/json
 
 | 이름        | 값            | 설명                                                                                                             |
 | ----------- | ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| appKey      | {appKey}      | 통합 Appkey 또는 서비스 Appkey                                                                                   |
+| appKey      | {appKey}      | 프로젝트 통합 Appkey 또는 서비스 Appkey                                                                                   |
 | serviceName | {serviceName} | credit-card(신용카드 API 호출 시 사용할 공개 키 발급 시),<br> id-card(신분증 API 호출 시 사용할 공개 키 발급 시) |
 
 [요청 본문]
