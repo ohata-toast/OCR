@@ -89,7 +89,7 @@ Content-Type: application/json
 
 | 이름                | 값             | 설명                  |
 | ------------------- | -------------- | --------------------- |
-| X-NHN-Authorization | {Access Token} | 발급받은 Access Token |
+| X-NHN-Authorization | {Access Token} | User Access Key 토큰 |
 
 [Path Variable]
 
@@ -197,7 +197,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business
 
 | 이름                | 값             | 설명                  |
 | ------------------- | -------------- | --------------------- |
-| X-NHN-Authorization | {Access Token} | 발급받은 Access Token |
+| X-NHN-Authorization | {Access Token} | User Access Key 토큰 |
 
 [Path Variable]
 
