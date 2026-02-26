@@ -636,7 +636,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/
 
 | 이름   | 값       | 설명                           |
 | ------ | -------- | ------------------------------ |
-| appKey | {appKey} | 통합 Appkey 또는 서비스 Appkey |
+| appKey | {appKey} | 프로젝트 통합 Appkey 또는 서비스 Appkey |
 
 [필드]
 
