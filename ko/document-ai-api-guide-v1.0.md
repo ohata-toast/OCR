@@ -60,7 +60,7 @@ Content-Type: application/json
 
 | 이름          | 타입    | 설명                                          |
 | ------------- | ------- | --------------------------------------------- |
-| resultCode    | int     | 응답 코드<br>성공 시 0, 실패시 오류 코드 반환 |
+| resultCode    | int     | 응답 코드<br>성공 시 0, 실패 시 오류 코드 반환 |
 | resultMessage | String  | 응답 메시지                                   |
 | isSuccessful  | boolean | 성공 여부                                     |
 

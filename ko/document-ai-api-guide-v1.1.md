@@ -10,11 +10,11 @@
 
 ### 인증 및 권한
 
-Document AI은(는) API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
+Document AI는 API 호출 시 인증/인가를 위해 User Access Key 토큰을 사용합니다. User Access Key 토큰은 User Access Key를 기반으로 발급되는 Bearer 타입의 일시적 액세스 토큰입니다. User Access Key 토큰 발급 및 사용에 대한 자세한 내용은 [User Access Key 토큰](/nhncloud/ko/public-api/user-access-key-token)을 참고하세요.
 
 ### 응답 공통 정보
 
-모든 API 요청 응답으로 HTTP 200 OK를 전달합니다. API 요청 성공 유무는 Response Body의 header 항목을 참고하여 판단할 수 있습니다.
+모든 API 요청 응답으로 HTTP 200 OK를 전달합니다. API 요청 성공 여부는 Response Body의 header 항목을 참고하여 판단할 수 있습니다.
 
 <details>
   <summary><strong>성공 응답</strong></summary>
@@ -55,7 +55,7 @@ Content-Type: application/json
 
 | 이름          | 타입    | 설명                                          |
 | ------------- | ------- | --------------------------------------------- |
-| resultCode    | int     | 응답 코드<br>성공 시 0, 실패시 오류 코드 반환 |
+| resultCode    | int     | 응답 코드<br>성공 시 0, 실패 시 오류 코드 반환 |
 | resultMessage | String  | 응답 메시지                                   |
 | isSuccessful  | boolean | 성공 여부                                     |
 
