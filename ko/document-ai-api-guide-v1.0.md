@@ -91,7 +91,7 @@ Content-Type: application/json
 
 | 이름          | 값                  | 설명                      |
 | ------------- | ------------------- | ------------------------- |
-| Authorization | {secretKey}         | 콘솔에서 발급받은 비밀 키 |
+| Authorization | {secretKey}         | 콘솔에서 발급 받은 비밀 키 |
 | Content-Type  | multipart/form-data | 콘텐츠 타입               |
 
 [요청 본문]
