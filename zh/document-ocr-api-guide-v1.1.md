@@ -90,7 +90,7 @@ Content-Type: application/json
 
 | Name                | Value          | Description              |
 |---------------------|----------------|--------------------------|
-| X-NHN-Authorization | {Access Token} | Issued Access Token      |
+| X-NHN-Authorization | Bearer {Access Token} | Issued Access Token      |
 
 [Path Variable]
 
@@ -105,7 +105,7 @@ Content-Type: application/json
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: ${Access Token}'
+-H 'X-NHN-Authorization: Bearer ${Access Token}'
 ```
 
 [Field]
@@ -198,7 +198,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business
 
 | Name                | Value          | Description              |
 |---------------------|----------------|--------------------------|
-| X-NHN-Authorization | {Access Token} | Issued Access Token      |
+| X-NHN-Authorization | Bearer {Access Token} | Issued Access Token      |
 
 [Path Variable]
 
@@ -216,7 +216,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business/status' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 --data-raw '{
   "businessNumber": "1234567890"
 }'

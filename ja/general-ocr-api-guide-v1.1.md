@@ -92,7 +92,7 @@ Content-Type: application/json
 
 | 名前                | 値                  | 説明                    |
 | ------------------- | ------------------- | ----------------------- |
-| X-NHN-Authorization | {Access Token}      | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {Access Token}      | User Access Keyトークン |
 | Content-Type        | multipart/form-data | コンテンツタイプ        |
 
 [リクエスト本文]
@@ -102,7 +102,7 @@ Content-Type: application/json
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: multipart/form-data'
 ```
 
@@ -118,7 +118,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 
 | 名前                | 値               | 説明                    |
 | ------------------- | ---------------- | ----------------------- |
-| X-NHN-Authorization | {Access Token}   | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {Access Token}   | User Access Keyトークン |
 | Content-Type        | application/json | コンテンツタイプ        |
 
 [リクエスト本文]
@@ -127,7 +127,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: application/json' \
 --data '{ "imageUrl": "https://example.com/example.jpg" }'
 ```
@@ -231,7 +231,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 
 | 名前                | 値                  | 説明                    |
 | ------------------- | ------------------- | ----------------------- |
-| X-NHN-Authorization | {Access Token}      | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {Access Token}      | User Access Keyトークン |
 | Content-Type        | multipart/form-data | コンテンツタイプ        |
 
 [リクエスト本文]
@@ -241,7 +241,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/cropping' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: multipart/form-data'
 ```
 
@@ -257,7 +257,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/
 
 | 名前                | 値               | 説明                    |
 | ------------------- | ---------------- | ----------------------- |
-| X-NHN-Authorization | {Access Token}   | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {Access Token}   | User Access Keyトークン |
 | Content-Type        | application/json | コンテンツタイプ        |
 
 [リクエスト本文]
@@ -266,7 +266,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/cropping' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: application/json' \
 --data '{ "imageUrl": "https://example.com/example.jpg" }'
 ```

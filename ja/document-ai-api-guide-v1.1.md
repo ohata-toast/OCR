@@ -89,14 +89,14 @@ Content-Type: application/json
 
 | 名前                | 値                  | 説明                    |
 | ------------------- | ------------------- | ----------------------- |
-| X-NHN-Authorization | {Access Token}      | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {Access Token}      | User Access Keyトークン |
 | Content-Type        | multipart/form-data | コンテンツタイプ        |
 
 [リクエスト本文]
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/document-ai' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -F 'image=@sample.png' \
 -F 'prompt="簡潔に要約してくれ"' \
 -F 'documentTypeCode="GENERAL"'
