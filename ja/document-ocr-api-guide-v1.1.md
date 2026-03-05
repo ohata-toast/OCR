@@ -90,7 +90,7 @@ Content-Type: application/json
 
 | 名前                | 値             | 説明                  |
 |-------------------|--------------|---------------------|
-| X-NHN-Authorization | Bearer {Access Token} | 発行されたAccess Token |
+| X-NHN-Authorization | Bearer {User Access Key Token} | 発行されたAccess Token |
 
 [Path Variable]
 
@@ -105,7 +105,7 @@ Content-Type: application/json
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}'
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}'
 ```
 
 [フィールド]
@@ -198,7 +198,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business
 
 | 名前                | 値             | 説明                  |
 |-------------------|--------------|---------------------|
-| X-NHN-Authorization | Bearer {Access Token} | 発行されたAccess Token |
+| X-NHN-Authorization | Bearer {User Access Key Token} | 発行されたAccess Token |
 
 [Path Variable]
 
@@ -216,7 +216,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business/status' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 --data-raw '{
   "businessNumber": "1234567890"
 }'

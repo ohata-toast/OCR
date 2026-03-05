@@ -89,7 +89,7 @@ Content-Type: application/json
 
 | 이름                | 값             | 설명                  |
 | ------------------- | -------------- | --------------------- |
-| X-NHN-Authorization | Bearer {Access Token} | User Access Key 토큰 |
+| X-NHN-Authorization | Bearer {User Access Key Token} | User Access Key 토큰 |
 
 [Path Variable]
 
@@ -104,7 +104,7 @@ Content-Type: application/json
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}'
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}'
 ```
 
 [필드]
@@ -197,7 +197,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business
 
 | 이름                | 값             | 설명                  |
 | ------------------- | -------------- | --------------------- |
-| X-NHN-Authorization | Bearer {Access Token} | User Access Key 토큰 |
+| X-NHN-Authorization | Bearer {User Access Key Token} | User Access Key 토큰 |
 
 [Path Variable]
 
@@ -215,7 +215,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/business/status' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 --data-raw '{
   "businessNumber": "1234567890"
 }'

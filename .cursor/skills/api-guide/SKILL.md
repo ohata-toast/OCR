@@ -33,7 +33,7 @@ ko를 먼저 작성하고, en → ja → zh 순으로 진행합니다. zh는 en 
 | 버전 | 인증 방식 | 요청 헤더 |
 |------|-----------|-----------|
 | v1.0 / v2.0 | Appkey + SecretKey | `Authorization: {secretKey}` |
-| v1.1 / v2.1 | User Access Key Token | `X-NHN-Authorization: Bearer {Access Token}` |
+| v1.1 / v2.1 | User Access Key Token | `X-NHN-Authorization: Bearer {User Access Key Token}` |
 
 버전이 올라가도 **URI 엔드포인트 경로 구조는 동일**하게 유지합니다. 버전 숫자만 변경됩니다.
 

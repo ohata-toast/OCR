@@ -102,7 +102,7 @@ Content-Type: application/json
 
 | 名前                | 値             | 説明                  |
 |-------------------|--------------|---------------------|
-| X-NHN-Authorization | Bearer {Access Token} | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {User Access Key Token} | User Access Keyトークン |
 
 [Path Variable]
 
@@ -115,7 +115,7 @@ Content-Type: application/json
 
 ```shell
 curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-keys/{serviceName}' \
--H 'X-NHN-Authorization: Bearer ${Access Token}'
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}'
 ```
 
 #### レスポンス
@@ -170,7 +170,7 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-ke
 
 | 名前                | 値               | 説明                  |
 |-------------------|-----------------|---------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Keyトークン |
 | X-Key-Version     | {x-key-version} | 発行された公開鍵のバージョン      |
 | Symmetric-Key     | {symmetricKey}  | 発行された公開鍵で暗号化された対称鍵  |
 
@@ -197,7 +197,7 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-ke
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-card' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -309,7 +309,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-c
 
 | 名前                | 値               | 説明                  |
 |-------------------|-----------------|---------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Keyトークン |
 | X-Key-Version     | {x-key-version} | 発行された公開鍵のバージョン      |
 | Symmetric-Key     | {symmetricKey}  | 発行された公開鍵で暗号化された対称鍵  |
 
@@ -336,7 +336,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-c
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -531,7 +531,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card'
 
 | 名前                | 値               | 説明                      |
 |-------------------|-----------------|-------------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Keyトークン     |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Keyトークン     |
 | X-Key-Version     | {x-key-version} | 発行された公開鍵のバージョン          |
 | Symmetric-Key     | {symmetricKey}  | 発行された公開鍵で暗号化された対称鍵      |
 | Request-Key       | {Request-Key}   | 身分証分析後に発行されたRequest-Key |
@@ -566,7 +566,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card'
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/authenticity' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}' \
 -H 'Request-Key: ${Request-Key}' \
@@ -630,7 +630,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/
 
 | 名前                | 値               | 説明                  |
 |-------------------|-----------------|---------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Keyトークン |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Keyトークン |
 | X-Key-Version     | {x-key-version} | 発行された公開鍵のバージョン      |
 | Symmetric-Key     | {symmetricKey}  | 発行された公開鍵で暗号化された対称鍵  |
 
@@ -657,7 +657,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/stand-alone' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```

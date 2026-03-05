@@ -102,7 +102,7 @@ Content-Type: application/json
 
 | Name                | Value          | Description          |
 |---------------------|----------------|----------------------|
-| X-NHN-Authorization | Bearer {Access Token} | User Access Key token |
+| X-NHN-Authorization | Bearer {User Access Key Token} | User Access Key token |
 
 [Path Variable]
 
@@ -115,7 +115,7 @@ Content-Type: application/json
 
 ```shell
 curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-keys/{serviceName}' \
--H 'X-NHN-Authorization: Bearer ${Access Token}'
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}'
 ```
 
 #### Response
@@ -170,7 +170,7 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-ke
 
 | Name                | Value           | Description                                        |
 |---------------------|-----------------|----------------------------------------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Key token                              |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Key token                              |
 | X-Key-Version       | {x-key-version} | Version of the public key issued                   |
 | Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 
@@ -197,7 +197,7 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/public-ke
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-card' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -309,7 +309,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-c
 
 | Name                | Value           | Description                                        |
 |---------------------|-----------------|----------------------------------------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Key token                              |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Key token                              |
 | X-Key-Version       | {x-key-version} | Version of the public key issued                   |
 | Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 
@@ -336,7 +336,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/credit-c
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
@@ -531,7 +531,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card'
 
 | Name                | Value           | Description                                        |
 |---------------------|-----------------|----------------------------------------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Key token                              |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Key token                              |
 | X-Key-Version       | {x-key-version} | Version of the public key issued                   |
 | Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 | Request-Key         | {Request-Key}   | Request-Key issued after ID card analysis          |
@@ -566,7 +566,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card'
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/authenticity' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}' \
 -H 'Request-Key: ${Request-Key}' \
@@ -630,7 +630,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/
 
 | Name                | Value           | Description                                        |
 |---------------------|-----------------|----------------------------------------------------|
-| X-NHN-Authorization | Bearer {Access Token}  | User Access Key token                              |
+| X-NHN-Authorization | Bearer {User Access Key Token}  | User Access Key token                              |
 | X-Key-Version       | {x-key-version} | Version of the public key issued                   |
 | Symmetric-Key       | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 
@@ -657,7 +657,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v2.1/appkeys/{appKey}/id-card/stand-alone' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: Bearer ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${User Access Key Token}' \
 -H 'X-Key-Version: ${x-key-version}' \
 -H 'Symmetric-Key: ${symmetricKey}'
 ```
