@@ -128,7 +128,7 @@ HTTP/1.1 200 OK ...
 ```markdown
 | 이름                | 값             | 설명                  |
 | ------------------- | -------------- | --------------------- |
-| X-NHN-Authorization | {Access Token} | User Access Key 토큰 |
+| X-NHN-Authorization | Bearer {Access Token} | User Access Key 토큰 |
 ```
 
 ## 브랜치별 도메인 매핑

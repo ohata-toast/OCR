@@ -83,7 +83,7 @@
 1. **제목**: `API v1.0 가이드` → `API v1.1 가이드`
 2. **인증 텍스트**: Appkey/SecretKey 설명 → User Access Key Token 설명
 3. **URI 버전**: `/v1.0/appkeys/{appKey}/` → `/v1.1/appkeys/{appKey}/`
-4. **요청 헤더**: `Authorization: {secretKey}` → `X-NHN-Authorization: {Access Token}`
+4. **요청 헤더**: `Authorization: {secretKey}` → `X-NHN-Authorization: Bearer {Access Token}`
 5. **curl 예시**: `-H "Authorization: ${SECRET_KEY}"` → `-H "X-NHN-Authorization: ${ACCESS_TOKEN}"`
 6. **오류 코드**: `INVALID_TOKEN`, `PERMISSION_DENIED` 추가
 

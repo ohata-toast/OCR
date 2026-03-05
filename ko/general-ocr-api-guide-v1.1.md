@@ -89,7 +89,7 @@ Content-Type: application/json
 
 | 이름                | 값                  | 설명                 |
 | ------------------- | ------------------- | -------------------- |
-| X-NHN-Authorization | {Access Token}      | User Access Key 토큰 |
+| X-NHN-Authorization | Bearer {Access Token}      | User Access Key 토큰 |
 | Content-Type        | multipart/form-data | 콘텐츠 타입          |
 
 [요청 본문]
@@ -99,7 +99,7 @@ Content-Type: application/json
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: multipart/form-data'
 ```
 
@@ -115,7 +115,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 
 | 이름                | 값               | 설명                 |
 | ------------------- | ---------------- | -------------------- |
-| X-NHN-Authorization | {Access Token}   | User Access Key 토큰 |
+| X-NHN-Authorization | Bearer {Access Token}   | User Access Key 토큰 |
 | Content-Type        | application/json | 콘텐츠 타입          |
 
 [요청 본문]
@@ -124,7 +124,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: application/json' \
 --data '{ "imageUrl": "https://example.com/example.jpg" }'
 ```
@@ -228,7 +228,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 
 | 이름                | 값                  | 설명                 |
 | ------------------- | ------------------- | -------------------- |
-| X-NHN-Authorization | {Access Token}      | User Access Key 토큰 |
+| X-NHN-Authorization | Bearer {Access Token}      | User Access Key 토큰 |
 | Content-Type        | multipart/form-data | 콘텐츠 타입          |
 
 [요청 본문]
@@ -238,7 +238,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general'
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/cropping' \
 -F 'image=@sample.png' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: multipart/form-data'
 ```
 
@@ -254,7 +254,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/
 
 | 이름                | 값               | 설명                 |
 | ------------------- | ---------------- | -------------------- |
-| X-NHN-Authorization | {Access Token}   | User Access Key 토큰 |
+| X-NHN-Authorization | Bearer {Access Token}   | User Access Key 토큰 |
 | Content-Type        | application/json | 콘텐츠 타입          |
 
 [요청 본문]
@@ -263,7 +263,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/
 
 ```shell
 curl -X POST 'https://ocr.api.nhncloudservice.com/v1.1/appkeys/{appKey}/general/cropping' \
--H 'X-NHN-Authorization: ${Access Token}' \
+-H 'X-NHN-Authorization: Bearer ${Access Token}' \
 -H 'Content-Type: application/json' \
 --data '{ "imageUrl": "https://example.com/example.jpg" }'
 ```
