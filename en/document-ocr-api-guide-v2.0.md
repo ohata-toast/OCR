@@ -1,21 +1,88 @@
 ## AI Service > OCR > Document OCR > API v2.0 Guide
 
+## Document OCR API Common Information
+
+### API Endpoints
+
+| Region                | Endpoint                            |
+| --------------------- | ----------------------------------- |
+| Korea (Pangyo) Region | https://ocr.api.nhncloudservice.com |
+
+### Authentication and Authorization
+
+AppKey and SecretKey are required to use the Document OCR API.
+An Appkey is a unique authentication key issued for each NHN Cloud service, used to identify the service and validate API requests. A SecretKey is a private key used to control access to the API.
+For more information on checking and using Appkeys and SecretKeys, please refer to the [Appkey](/nhncloud/en/public-api/appkey).
+
+Project Integrated Appkey can be used in place of the Appkey. Project Integrated Appkey is a common authentication key that can be shared across multiple services within a single NHN Cloud project.
+For more information on creating and using Project Integrated Appkeys, please refer to the [Project Integrated Appkey](/nhncloud/en/public-api/project-appkey).
+
+### Common Response Information
+
+All API requests return HTTP 200 OK. The success or failure of an API request can be determined by referring to the header in the Response Body.
+
+<details>
+  <summary><strong>Success Response</strong></summary>
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "header": {
+        "resultCode": 0,
+        "resultMessage": "SUCCESS",
+        "isSuccessful": true
+    },
+    "result": {
+        ...
+    }
+}
+```
+
+</details>
+
+<details>
+  <summary><strong>Failure Response</strong></summary>
+
+```
+{
+    "header": {
+        "isSuccessful": false,
+        "resultCode": -1,
+        "resultMessage": "Unknown error."
+    }
+}
+```
+
+</details>
+
+| Name          | Type    | Description                                                        |
+| ------------- | ------- | ------------------------------------------------------------------ |
+| resultCode    | int     | Response code<br>0 on success, error code on failure               |
+| resultMessage | String  | Response message                                                   |
+| isSuccessful  | boolean | Success or not                                                     |
+
+### Error Codes
+
+#### Common
+
+| Error Code | Error Message                                                                              | Description                                      |
+| ---------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+| -1         | Unknown error.                                                                             | Unknown error                                    |
+| 4000001    | Invalid parameter.                                                                         | Invalid parameter                                |
+| 4000002    | Invalid file.                                                                              | Invalid file                                     |
+| 4000003    | Invalid file type.                                                                         | Invalid file type                                |
+| 4000004    | Uploaded file is empty.                                                                    | Uploaded file is empty                           |
+| 4000005    | Required headers is missing.                                                               | Required headers missing                         |
+| 4000006    | Api call limit exceeded, If you need to adjust the limit, please contact customer service. | API call limit exceeded                          |
+| 4131000    | Request size is larger than permissible limit. the permissible limit is 5mb.               | Request size exceeds the permissible limit (5MB) |
+
 ### Overview of v2.0 API
 
 #### Changes from v1.0
 
 * Enhanced security with the electronic envelope method.
-
-#### Domain
-
-| Name                  | Domain                                                                     |
-|-----------------------|----------------------------------------------------------------------------|
-| OCR Public API Domain | [https://ocr.api.nhncloudservice.com](https://ocr.api.nhncloudservice.com) |
-
-#### Prerequisites (AppKey, SecretKey)
-
-* AppKey and SecretKey are required to use the API.
-* You can find the {appKey} and {secretKey} in the **URL & Appkey** menu at the top of the console.
 
 #### Caution
 
@@ -26,8 +93,6 @@
 ### Issue Public Key
 
 #### Request
-
-* You can find the {appKey} and {secretKey} in the **URL & Appkey** menu at the top of the console.
 
 [URI]
 
@@ -96,8 +161,6 @@ curl -X GET 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/public-ke
 #### Credit Card Analysis API
 
 #### Request
-
-* You can find the {appKey} and {secretKey} in the **URL & Appkey** menu at the top of the console.
 
 [URI]
 
@@ -237,8 +300,6 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/credit-c
 ### ID Card Analysis API
 
 #### Request
-
-* You can find the {appKey} and {secretKey} in the **URL & Appkey** menu at the top of the console.
 
 [URI]
 
@@ -422,7 +483,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card'
 | key                     | value type | description                                                                                                                            |
 |-------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **driverLicenseNumber** | string     | Recognized driver license number                                                                                                       |
-| **licenseType**         | string     | Recognized driver license type (Class 1 Normal, etc.)<br>When the values are 2 or more, separate them with “/”                         |
+| **licenseType**         | string     | Recognized driver license type (Class 1 Normal, etc.)<br>When the values are 2 or more, separate them with "/"                         |
 | **name**                | string     | Recognized name                                                                                                                        |
 | **residentNumber**      | string     | Recognized resident registration number                                                                                                |
 | **condition**           | string     | Recognized driver license condition<br>(If the field does not exist according to the driver's license, the value of the field is none) |
@@ -461,8 +522,6 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card'
 ### Verify Authenticity API
 
 #### Request
-
-* You can find the {appKey} and {secretKey} in the **URL & Appkey** menu at the top of the console.
 
 [URI]
 
@@ -563,8 +622,6 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 
 #### Request
 
-* You can find the {appKey} and {secretKey} in the **URL & Appkey** menu at the top of the console.
-
 [URI]
 
 | Method | URI                                        |
@@ -579,8 +636,8 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 | X-Key-Version | {x-key-version} | Version of the public key issued                   |
 | Symmetric-Key | {symmetricKey}  | Symmetric key encrypted with the issued public key |
 
-* {symmetricKey} must be created as a 32- **byte random number**.
-* {symmetricKey} must be encrypted with the**RSA/ECB/PKCS1Padding** method (using public key).
+* {symmetricKey} must be created as a **32-byte random number**.
+* {symmetricKey} must be encrypted with the **RSA/ECB/PKCS1Padding** method (using public key).
 
 [Path Variable]
 
@@ -594,7 +651,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 |-------|---------------------|-------------|--------------------------------------|
 | image | multipart/form-data | Image file  | Image encrypted with a symmetric key |
 
-* Image files must be encrypted with the**AES-256/CBC/PKCS7Padding** method (using a symmetric key).
+* Image files must be encrypted with the **AES-256/CBC/PKCS7Padding** method (using a symmetric key).
 * The initialization vector (IV) uses the first 16 bytes (i.e., bytes 0-15) of the symmetric key.
 
 [Request Body]
@@ -738,7 +795,7 @@ curl -X POST 'https://ocr.api.nhncloudservice.com/v2.0/appkeys/{appKey}/id-card/
 | key                     | value type | description                                                                                                                            |
 |-------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **driverLicenseNumber** | string     | Recognized driver license number                                                                                                       |
-| **licenseType**         | string     | Recognized driver license type (Class 1 Normal, etc.)<br>When the values are 2 or more, separate them with “/”                         |
+| **licenseType**         | string     | Recognized driver license type (Class 1 Normal, etc.)<br>When the values are 2 or more, separate them with "/"                         |
 | **name**                | string     | Recognized name                                                                                                                        |
 | **residentNumber**      | string     | Recognized resident registration number                                                                                                |
 | **condition**           | string     | Recognized driver license condition<br>(If the field does not exist according to the driver's license, the value of the field is none) |
